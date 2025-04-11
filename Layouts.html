@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>תוצאה מה-API של יצירת חשבונית</title>
+
+    <!-- Zoho SDK -->
+    <script src="https://live.zwidgets.com/js-sdk/1.1/ZohoEmbededAppSDK.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="cssforReceipt.css">
+</head>
+<body>
+    <!-- Image -->
+    <img src="logo.png" alt="Logo" class="top-right-image">
+
+    <!-- Receipt Section -->
+    <div class="receipt-section">
+
+        <p>How were you paid? If you were paid in multiple forms of payment, you can choose several types of receipts.</p>
+
+         <!-- Summary of selected records -->
+    <div class="invoice-summary" id="invoiceSummary"></div>
+
+        <table class="receipt-table">
+            <thead>
+                <tr>
+                    <th>* Receipt type</th>
+                    <th>* Date</th>
+                    <th>* Amount</th>
+                    <th>* Currency</th>
+                    <th>More details</th>
+                    <th>Branch (customer)</th> <!-- ✅ New field -->
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="receiptSubformBody"></tbody>
+        </table>
+
+        <button id="addReceipt" class="add-receipt-btn" onclick="addReceiptRow({ manual: true })">➕ Add receipt</button>
+    </div>
+
+   
+
+    <!-- Final Total Paid Summary (KEEP THIS ONE) -->
+    <div class="payment-summary">
+        <input class="amount-input" id="grandTotalAmount" value="₪ 0.00" readonly />
+        <span class="label">Total Paid</span>
+    </div>
+
+    <!-- Create Receipt Button -->
+    <button id="createReceiptBtn" class="create-receipt-btn" onclick="createReceipt()">Create receipt</button>
+
+    <!-- PDF & View Record Buttons -->
+    <div id="pdfDownloadContainer"></div>
+
+    <!-- Output (debug/log) -->
+    <pre id="invoiceOutput">Loading invoice data...</pre>
+
+    <!-- JavaScript -->
+    <script src="scriptForReceipt.js"></script>
+</body>
+</html>
